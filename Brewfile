@@ -1,0 +1,6 @@
+brew "tmux"
+brew "ack"
+brew "yarn"
+brew "zsh"
+brew "rbenv"
+brew "vim"

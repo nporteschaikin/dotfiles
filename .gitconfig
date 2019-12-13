@@ -1,0 +1,10 @@
+[user]
+	name = Noah Portes Chaikin
+	email = noah@porteschaikin.com
+[commit]
+	gpgsign = true
+[alias]
+	amend = "commit -C HEAD --amend"
+	pluck = "cherry-pick"
+	ls = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+	publish = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
