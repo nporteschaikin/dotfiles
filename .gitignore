@@ -1,3 +1,5 @@
 .vim/viminfo
 .vim/swaps/*
 .vim/undo
+
+zsh/env.zsh
