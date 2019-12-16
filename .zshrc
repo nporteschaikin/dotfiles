@@ -23,5 +23,5 @@ source ~/gpg.zsh
 source ~/history.zsh
 source ~/prompt.zsh
 source ~/rbenv.zsh
-source ~/tmux.zsh
 source ~/go.zsh
+source ~/env.zsh
