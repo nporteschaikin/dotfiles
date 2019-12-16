@@ -1,4 +1,4 @@
-info() {
+step() {
   printf "$1\n"
 }
 
@@ -30,27 +30,26 @@ link_dotfiles() {
     else
       ln -fs $src $target
       success "$src → $target"
-      msg_done
     fi
   done
 }
 
-info "🍺 Installing Homebrew..."
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-success "🍺 Installed Homebrew!"
+# step "🍺 Installing Homebrew..."
+# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# success "🍺 Installed Homebrew!"
+#
+# step "🍺 Brewing some dependencies..."
+# brew bundle
+# success "🍺 All brewed!"
+#
+# step "🔌 Installing Vim plugins..."
+# vim +PlugInstall +qall > /dev/null
+# success "🔌 We're plugged in!"
 
-info "🍺 Brewing some dependencies..."
-brew bundle
-success "🍺 All brewed!"
-
-info "🔌 Installing Vim plugins..."
-vim +PlugInstall +qall > /dev/null
-success "🔌 We're plugged in!"
-
-info "🔗 Linking dotfiles..."
+step "🔗 Linking dotfiles..."
 link_dotfiles
 success "🔗 Linked!"
-
-info "🐚 Changing shell to ZSH..."
-chsh -s /bin/zsh
-success "🐚 Shell out, you're set!"
+#
+# step "🐚 Changing shell to ZSH..."
+# chsh -s /bin/zsh
+# success "🐚 Shell out, you're set!"
