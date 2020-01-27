@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 step() {
   printf "$1\n"
 }
@@ -34,22 +37,38 @@ link_dotfiles() {
   done
 }
 
-# step "🍺 Installing Homebrew..."
-# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# success "🍺 Installed Homebrew!"
-#
-# step "🍺 Brewing some dependencies..."
-# brew bundle
-# success "🍺 All brewed!"
-#
-# step "🔌 Installing Vim plugins..."
-# vim +PlugInstall +qall > /dev/null
-# success "🔌 We're plugged in!"
+if [[ $(command -v brew) == "" ]]; then
+  step "🍺 Installing Homebrew..."
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
+    < /dev/null
+  success "🍺 Installed Homebrew!"
+else
+  step "🍺 Updating Homebrew..."
+  brew update
+  success "🍺 Updated Homebrew!"
+fi
+
+step "🍺 Brewing some dependencies..."
+brew bundle
+success "🍺 All brewed!"
+
+step "🔌 Installing Vim plugins..."
+if [[ ! -d ~/.vim/bundle/Vundle.vim ]]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+vim +PluginInstall +qall >/dev/null
+success "🔌 We're plugged in!"
+
+if [[ ! -f zsh/env.zsh ]]; then
+  cp zsh/env.zsh.example zsh/env.zsh
+  chmod +x zsh/env.zsh
+  success "☀️ Created zsh/env.zsh."
+fi
 
 step "🔗 Linking dotfiles..."
 link_dotfiles
 success "🔗 Linked!"
-#
-# step "🐚 Changing shell to ZSH..."
-# chsh -s /bin/zsh
-# success "🐚 Shell out, you're set!"
+
+step "🐚 Changing shell to ZSH..."
+chsh -s /bin/zsh
+success "🐚 Shell out, you're set!"

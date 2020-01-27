@@ -3,3 +3,5 @@
 .vim/undo
 
 zsh/env.zsh
+
+Brewfile.lock.json
