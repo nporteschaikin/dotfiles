@@ -1,6 +1,7 @@
 brew "ack"
 brew "gpg"
 brew "hub"
+brew "prettier"
 brew "rbenv"
 brew "the_silver_searcher"
 brew "tmux"
