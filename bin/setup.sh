@@ -52,6 +52,10 @@ step "🍺 Brewing some dependencies..."
 brew bundle
 success "🍺 All brewed!"
 
+step "💻 Installing pure prompt"
+npm install --global pure-prompt
+step "💻 Hello world!"
+
 step "🔌 Installing Vim plugins..."
 if [[ ! -d ~/.vim/bundle/Vundle.vim ]]; then
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

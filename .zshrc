@@ -21,7 +21,9 @@ source ~/completion.zsh
 source ~/functions.zsh
 source ~/gpg.zsh
 source ~/history.zsh
-source ~/prompt.zsh
 source ~/rbenv.zsh
 source ~/go.zsh
 source ~/env.zsh
+
+autoload -U promptinit; promptinit
+prompt pure
