@@ -8,3 +8,4 @@
 	pluck = "cherry-pick"
 	ls = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 	publish = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+	now = "amend --date=now"
