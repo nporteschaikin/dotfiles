@@ -1,4 +1,5 @@
 autoload -U colors && colors
+autoload -U promptinit; promptinit
 
 bindkey -v
 
@@ -25,5 +26,4 @@ source ~/rbenv.zsh
 source ~/go.zsh
 source ~/env.zsh
 
-autoload -U promptinit; promptinit
 prompt pure
