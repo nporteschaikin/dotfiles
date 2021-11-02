@@ -29,11 +29,3 @@ ghc() {
 npc() {
   ghc nporteschaikin/$1
 }
-
-work() {
-  if [ "$1" = "t" ]; then
-    ghc codeclimate-testing/$2
-  else
-    ghc codeclimate/$1
-  fi
-}

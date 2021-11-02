@@ -1,3 +1,5 @@
+tap "homebrew/cask-fonts"
+
 brew "ack"
 brew "gpg"
 brew "hub"
@@ -6,6 +8,8 @@ brew "rbenv"
 brew "tfenv"
 brew "the_silver_searcher"
 brew "tmux"
-brew "vim"
+brew "neovim"
 brew "yarn"
 brew "zsh"
+
+cask "font-hack-nerd-font"

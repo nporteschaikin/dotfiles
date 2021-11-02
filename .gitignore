@@ -2,6 +2,7 @@
 .vim/swaps/*
 .vim/undo
 
-zsh/env.zsh
-
 Brewfile.lock.json
+
+neovim/lua/.env.lua
+zsh/.env.zsh
