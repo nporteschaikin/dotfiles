@@ -24,6 +24,12 @@ source ~/gpg.zsh
 source ~/history.zsh
 source ~/rbenv.zsh
 source ~/go.zsh
-source ~/env.zsh
+source ~/.env.zsh
+
+# stripe-specific
+source ~/.bash_profile
+source ~/.bashrc
+eval "$(nodenv init -)"
+typeset -aU path
 
 prompt pure

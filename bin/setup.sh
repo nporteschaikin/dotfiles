@@ -1,41 +1,7 @@
 #!/bin/bash
 set -e
 
-step() {
-  printf "$1\n"
-}
-
-success() {
-  printf "\e[0;32m$1\e[0m\n\n"
-}
-
-error() {
-  printf "\e[0;31m$1\e[0m\n"
-}
-
-warn() {
-  printf "\e[0;33m$1\e[0m\n"
-}
-
-link_dotfiles() {
-  files=$(find . -type f -maxdepth 2 -name ".*" -o -name "*.zsh" -o -name "*.vim" | sed "s|^\./||")
-
-  for file in ${files[@]}; do
-    src="$(pwd)/$file"
-    target="$HOME/$(printf "%s" "$file" | sed "s/.*\/\(.*\)/\1/g")"
-
-    if [ -e "$target" ]; then
-      if [ "$(readlink "$target")" = "$src" ]; then
-        warn "$src is already linked to $target!"
-      else
-        error "$src could not be linked to $target: target exists!"
-      fi
-    else
-      ln -fs $src $target
-      success "$src → $target"
-    fi
-  done
-}
+source "$(dirname $0)/helpers.sh"
 
 if [[ $(command -v brew) == "" ]]; then
   step "🍺 Installing Homebrew..."
@@ -48,30 +14,14 @@ else
   success "🍺 Updated Homebrew!"
 fi
 
-step "🍺 Brewing some dependencies..."
-brew bundle
-success "🍺 All brewed!"
+sh -c $DOTFILES_DIR/bin/bundle_brewfile.sh
+sh -c $DOTFILES_DIR/bin/create_env_files.sh
+sh -c $DOTFILES_DIR/bin/link_dotfiles.sh
+sh -c $DOTFILES_DIR/bin/setup_neovim.sh
 
-step "💻 Installing pure prompt"
-npm install --global pure-prompt
-step "💻 Hello world!"
-
-step "🔌 Installing Vim plugins..."
-if [[ ! -d ~/.vim/bundle/Vundle.vim ]]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-vim +PlugInstall +qall >/dev/null
-success "🔌 We're plugged in!"
-
-if [[ ! -f zsh/env.zsh ]]; then
-  cp zsh/env.zsh.example zsh/env.zsh
-  chmod +x zsh/env.zsh
-  success "☀️ Created zsh/env.zsh."
-fi
-
-step "🔗 Linking dotfiles..."
-link_dotfiles
-success "🔗 Linked!"
+step "💻 Installing pure prompt..."
+npm install --global --silent pure-prompt &>/dev/null
+success "💻 Hello world!"
 
 step "🐚 Changing shell to ZSH..."
 chsh -s /bin/zsh
