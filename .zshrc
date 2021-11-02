@@ -26,10 +26,7 @@ source ~/rbenv.zsh
 source ~/go.zsh
 source ~/.env.zsh
 
-# stripe-specific
-source ~/.bash_profile
-source ~/.bashrc
 eval "$(nodenv init -)"
-typeset -aU path
 
+autoload -U promptinit; promptinit
 prompt pure
