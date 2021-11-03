@@ -4,5 +4,5 @@ set -e
 source "$(dirname $0)/helpers.sh"
 
 step "🍺 Brewing some dependencies..."
-brew bundle --file $DOTFILES_DIR/Brewfile
+run "brew bundle --file $DOTFILES_DIR/Brewfile --quiet"
 success "🍺 All brewed!"
