@@ -4,5 +4,5 @@
 
 Brewfile.lock.json
 
-neovim/lua/.env.lua
-zsh/.env.zsh
+neovim/lua/env.lua
+zsh/env.zsh
