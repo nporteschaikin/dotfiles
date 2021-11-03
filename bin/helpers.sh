@@ -17,16 +17,16 @@ success() {
 }
 
 error() {
-  printf "\e[0;31m   ✖ $1\e[0m\n"
+  printf "\e[0;31m✖ $1\e[0m\n"
 }
 
 warn() {
-  printf "\e[0;33m   ! $1\e[0m\n"
+  printf "\e[0;33m! $1\e[0m\n"
 }
 
 run() {
-  printf "   → $1\n"
-  eval "$1 &>/dev/null"
+  printf "→ $1\n"
+  eval "$1"
 }
 
 create_symlink() {

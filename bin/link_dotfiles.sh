@@ -4,6 +4,7 @@ set -e
 source "$(dirname $0)/helpers.sh"
 
 step "🔗 Linking dotfiles..."
+run "touch $DOTFILES_DIR/zsh/env.zsh"
 
 files=$(find . -type f -maxdepth 2 -name ".*" -o -name "*.zsh" -o -name "*.vim" | sed "s|^\./||")
 

@@ -3,7 +3,13 @@ set -e
 
 source "$(dirname $0)/helpers.sh"
 
-link_neovim_lua() {
+create_env_config() {
+  if [ ! -e "$DOTFILES_DIR/neovim/lua/env.lua" ]; then
+    run "echo \"-- Add env-specific Nvim configuration here.\" > $DOTFILES_DIR/neovim/lua/env.lua"
+  fi
+}
+
+link_configs() {
   run "mkdir -p $HOME/.config/nvim/lua"
   pushd $DOTFILES_DIR/neovim >/dev/null
   files=$(find . -type f -maxdepth 2 -name "*.lua" | sed "s|^\./||")
@@ -30,7 +36,8 @@ install_solarized() {
 }
 
 step "🔌 Setting up neovim..."
-link_neovim_lua
+create_env_config
+link_configs
 install_vim_plug
 install_plugins
 install_solarized

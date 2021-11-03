@@ -16,7 +16,6 @@ fi
 
 sh -c $DOTFILES_DIR/bin/bundle_brewfile.sh
 sh -c $DOTFILES_DIR/bin/setup_pure_prompt.sh
-sh -c $DOTFILES_DIR/bin/create_env_files.sh
 sh -c $DOTFILES_DIR/bin/link_dotfiles.sh
 sh -c $DOTFILES_DIR/bin/setup_iterm.sh
 sh -c $DOTFILES_DIR/bin/setup_neovim.sh
