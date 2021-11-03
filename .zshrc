@@ -24,9 +24,10 @@ source ~/gpg.zsh
 source ~/history.zsh
 source ~/rbenv.zsh
 source ~/go.zsh
-source ~/.env.zsh
+source ~/env.zsh
 
 eval "$(nodenv init -)"
 
+fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure

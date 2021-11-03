@@ -13,4 +13,5 @@ brew "tmux"
 brew "yarn"
 brew "zsh"
 
+cask "iterm2"
 cask "font-hack-nerd-font"

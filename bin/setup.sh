@@ -5,7 +5,8 @@ source "$(dirname $0)/helpers.sh"
 
 if [[ $(command -v brew) == "" ]]; then
   step "🍺 Installing Homebrew..."
-  run "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
   success "🍺 Installed Homebrew!"
 else
   step "🍺 Updating Homebrew..."
@@ -14,7 +15,7 @@ else
 fi
 
 sh -c $DOTFILES_DIR/bin/bundle_brewfile.sh
-sh -c $DOTFILES_DIR/bin/install_npm_dependencies.sh
+sh -c $DOTFILES_DIR/bin/setup_pure_prompt.sh
 sh -c $DOTFILES_DIR/bin/create_env_files.sh
 sh -c $DOTFILES_DIR/bin/link_dotfiles.sh
 sh -c $DOTFILES_DIR/bin/setup_iterm.sh

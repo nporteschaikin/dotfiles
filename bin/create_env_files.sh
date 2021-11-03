@@ -7,5 +7,5 @@ create() {
   run "touch $1"
 }
 
-create $DOTFILES_DIR/zsh/.env.zsh
-create $DOTFILES_DIR/neovim/lua/.env.lua
+create $DOTFILES_DIR/zsh/env.zsh
+create $DOTFILES_DIR/neovim/lua/env.lua

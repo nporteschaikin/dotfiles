@@ -2,7 +2,7 @@
 	name = Noah Portes Chaikin
 	email = noah@porteschaikin.com
 [commit]
-	gpgsign = true
+	gpgsign = false
 [alias]
 	amend = "commit -C HEAD --amend"
 	pluck = "cherry-pick"
