@@ -26,6 +26,21 @@ vim.cmd('colorscheme solarized')
 vim.api.nvim_command('let g:ackprg = \'rg --vimgrep --no-heading\'')
 vim.api.nvim_command('let NERDTreeShowHidden=1')
 
+local nvim_lsp = require('lspconfig')
+local bindings = require('bindings')
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'eslint', 'flow' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = bindings.attach_lsp_bindings,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
+
 require('lualine').setup {
   options = {
     theme = 'solarized_dark',

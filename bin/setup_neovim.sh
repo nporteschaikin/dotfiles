@@ -23,22 +23,22 @@ link_configs() {
   done
 }
 
+install_solarized() {
+  run "curl -sfLo $HOME/.config/nvim/colors/solarized.vim --create-dirs https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim"
+}
+
 install_vim_plug() {
   run "curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 }
 
 install_plugins() {
-  run "nvim +PlugInstall +qall"
-}
-
-install_solarized() {
-  run "curl -sfLo $HOME/.config/nvim/colors/solarized.vim --create-dirs https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim"
+  run "nvim +PlugInstall +qall &>/dev/null"
 }
 
 step "🔌 Setting up neovim..."
 create_env_config
 link_configs
+install_solarized
 install_vim_plug
 install_plugins
-install_solarized
 success "🔌 We're set up!"
